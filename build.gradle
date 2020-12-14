@@ -1,0 +1,32 @@
+plugins {
+    id 'application'
+    id 'java'
+}
+
+group 'br.com.selat'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.30'
+    compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.30'
+    compile group: 'org.apache.commons', name: 'commons-text', version: '1.9'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+ext {
+    javaMainClass = "br.com.selat.ruleengine.Main"
+}
+
+application {
+    mainClassName = javaMainClass
+}
