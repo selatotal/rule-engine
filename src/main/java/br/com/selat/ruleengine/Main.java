@@ -15,11 +15,11 @@ public class Main {
         Rule rule = new Rule();
 
         RuleItem ruleItem1 = new RuleItem(RuleType.ARRIVAL);
-        ruleItem1.addCondition(Conditions.TRUE, null, null);
+        ruleItem1.addCondition(Conditions.TRUE);
         rule.getRuleItems().add(ruleItem1);
 
         RuleItem ruleItem2 = new RuleItem(RuleType.ARRIVAL);
-        ruleItem2.addCondition(Conditions.FALSE, null, null);
+        ruleItem2.addCondition(Conditions.FALSE);
         rule.getRuleItems().add(ruleItem2);
 
         RuleItem ruleItem3 = new RuleItem(RuleType.ARRIVAL);
@@ -29,12 +29,12 @@ public class Main {
         rule.getRuleItems().add(ruleItem3);
 
         RuleItem ruleItem4 = new RuleItem(RuleType.ARRIVAL);
-        ruleItem4.addCondition(Conditions.EVENT_ATTRIBUTE_IS_NOT_EMPTY, "id", null);
+        ruleItem4.addCondition(Conditions.EVENT_ATTRIBUTE_IS_NOT_EMPTY, "id");
         ruleItem4.addAction(Actions.CREATE_OCCURRENCE);
         rule.getRuleItems().add(ruleItem4);
 
         RuleItem ruleItem5 = new RuleItem(RuleType.ARRIVAL);
-        ruleItem5.addCondition(Conditions.EVENT_ATTRIBUTE_IS_NOT_EMPTY, "id", null);
+        ruleItem5.addCondition(Conditions.EVENT_ATTRIBUTE_IS_NOT_EMPTY, "id");
         ruleItem5.addCondition(Conditions.EVENT_ATTRIBUTE_VALUE, "id", "1234");
         ruleItem5.addAction(Actions.CREATE_OCCURRENCE);
         rule.getRuleItems().add(ruleItem5);

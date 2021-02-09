@@ -23,6 +23,18 @@ public class RuleItem {
         this.attributeValues = new ArrayList<>();
     }
 
+    public void addCondition(Conditions condition){
+        conditions.add(condition);
+        attributeNames.add(null);
+        attributeValues.add(null);
+    }
+
+    public void addCondition(Conditions condition, String attributeName){
+        conditions.add(condition);
+        attributeNames.add(attributeName);
+        attributeValues.add(null);
+    }
+
     public void addCondition(Conditions condition, String attributeName, String attributeValue){
         conditions.add(condition);
         attributeNames.add(attributeName);
