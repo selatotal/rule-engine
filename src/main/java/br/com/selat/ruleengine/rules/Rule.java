@@ -39,7 +39,11 @@ public class Rule {
         for(RuleItem ruleItem : ruleItems){
             if (ruleType == ruleItem.getRuleType() && (checkConditions(event, ruleItem))){
                 logger.info("action will be processed");
-                executeActions(event, ruleItem);
+                RuleResult result = executeActions(event, ruleItem);
+                if (result == RuleResult.STOP_PROCESS){
+                    logger.info("Action is Stop process");
+                    return;
+                }
             } else {
                 logger.info("action will not be processed");
             }
@@ -68,19 +72,22 @@ public class Rule {
         }
     }
 
-    private void executeActions(Event event, RuleItem ruleItem){
-        executeActions(event, ruleItem, 0);
+    private RuleResult executeActions(Event event, RuleItem ruleItem){
+        return executeActions(event, ruleItem, 0);
     }
 
-    private void executeActions(Event event, RuleItem ruleItem, int position){
+    private RuleResult executeActions(Event event, RuleItem ruleItem, int position){
         if (position >= ruleItem.getActions().size()){
-            return;
+            return RuleResult.OK;
         }
         Actions action = ruleItem.getActions().get(position);
+        if (action == Actions.STOP_PROCESS){
+            return RuleResult.STOP_PROCESS;
+        }
         if (action == Actions.CREATE_OCCURRENCE){
             action.accept(new CreateOccurrenceRequest().event(event));
         }
-        executeActions(event, ruleItem, position+1);
+        return executeActions(event, ruleItem, position+1);
     }
 
 }

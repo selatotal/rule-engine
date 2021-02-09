@@ -25,6 +25,7 @@ public class Main {
         RuleItem ruleItem3 = new RuleItem(RuleType.ARRIVAL);
         ruleItem3.addCondition(Conditions.EVENT_ATTRIBUTE_VALUE, "id", "1234");
         ruleItem3.addAction(Actions.CREATE_OCCURRENCE);
+        ruleItem3.addAction(Actions.STOP_PROCESS);
         rule.getRuleItems().add(ruleItem3);
 
         RuleItem ruleItem4 = new RuleItem(RuleType.ARRIVAL);
